@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: laravel-app
+    env: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    buildCommand: ""
+    startCommand: php artisan serve --host 0.0.0.0 --port 10000
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_DEBUG
+        value: false
+      - key: APP_URL
+        value: https://timemanagerment.onrender.com
+      - key: DB_CONNECTION
+        value: mysql
+      - key: DB_HOST
+        value: timemanagement-st-ea70.l.aivencloud.com
+      - key: DB_PORT
+        value: 25380
+      - key: DB_DATABASE
+        value: defaultdb
+      - key: DB_USERNAME
+        value: avnadmin
+      - key: DB_PASSWORD
+        sync: false 
+      - key: SESSION_DRIVER
+        value: database
+      - key: QUEUE_CONNECTION
+        value: database
+      - key: CACHE_STORE
+        value: database
+      - key: APP_TIMEZONE
+        value: Asia/Ho_Chi_Minh
