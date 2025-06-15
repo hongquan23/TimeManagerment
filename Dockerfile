@@ -1,5 +1,5 @@
 # Sử dụng PHP 8.2 FPM làm base image
-FROM php:8.2-fpm
+FROM php:8.2
 
 # Cài đặt các package hệ thống và PHP extension cần thiết cho Laravel
 RUN apt-get update && apt-get install -y \
@@ -32,11 +32,11 @@ COPY . .
 RUN composer install --no-dev --no-interaction --optimize-autoloader
 
 # Cấp quyền cho thư mục storage và bootstrap/cache
-RUN chown -R www-data:www-data /var/www \
-    && chmod -R 775 storage bootstrap/cache
+RUN chmod -R 775 storage bootstrap/cache \
+    && chown -R www-data:www-data .
 
-# Mở port 8000 (nếu chạy php artisan serve)
+# Expose port Laravel sẽ chạy
 EXPOSE 8000
 
-# Lệnh khởi chạy mặc định: dùng php-fpm (nếu bạn chạy qua nginx)
-CMD ["php-fpm"]
+# Lệnh mặc định để khởi chạy Laravel
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
