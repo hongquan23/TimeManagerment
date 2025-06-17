@@ -7,6 +7,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+
             <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="max-w-xl">
                     @include('profile.partials.update-profile-information-form')
@@ -24,6 +25,15 @@
                     @include('profile.partials.delete-user-form')
                 </div>
             </div>
+
+            {{-- Nút quay lại trang calendar --}}
+            <div class="flex justify-center mt-6">
+                <a href="{{ route('calendar.layout') }}"
+                   class="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                    ← Quay lại
+                </a>
+            </div>
+
         </div>
     </div>
 </x-app-layout>
