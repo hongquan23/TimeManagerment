@@ -581,7 +581,7 @@
     taolich(currentDate.getMonth(), currentDate.getFullYear(), true);
     renderWeekView(currentDate);
     updateWeekTitle();
-    renderEventsOnWeekView(allEvents); // Gọi lần đầu để hiển thị sự kiện
+    renderEventsOnWeekView(allEvents)  ; // Gọi lần đầu để hiển thị sự kiện
 </script>
 </body>
 </html>
